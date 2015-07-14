@@ -13,4 +13,6 @@ public class EpisodeDetailsActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
     }
+
+
 }
