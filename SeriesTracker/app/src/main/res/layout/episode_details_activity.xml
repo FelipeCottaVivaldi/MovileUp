@@ -25,6 +25,7 @@
                     android:src="@drawable/overlay"
                     android:scaleType="fitXY"/>
                 <TextView
+                    android:id="@+id/episode_details_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/episode_details_screenshot"
@@ -62,6 +63,7 @@
                         android:layout_marginRight="@dimen/default_spacing_large"/>
 
                     <TextView
+                        android:id="@+id/episode_details_first_aired"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="03/05/2006 at 00:00"
@@ -101,6 +103,7 @@
                     </View>
 
                     <TextView
+                        android:id="@+id/episode_details_overview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="bablablablabalbablablablabalbablablbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabal"
