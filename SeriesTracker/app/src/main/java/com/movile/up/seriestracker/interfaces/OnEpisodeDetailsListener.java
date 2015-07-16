@@ -4,6 +4,6 @@ import com.movile.up.seriestracker.model.Episode;
 /**
  * Created by android on 7/16/15.
  */
-public interface OnOperationListener<X> {
-    public void onOperationSucess(X x);
+public interface OnEpisodeDetailsListener<X> {
+    public void OnEpisodeDetailsSucess(X x);
 }

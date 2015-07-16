@@ -1,30 +1,28 @@
 package com.movile.up.seriestracker;
 
-import android.nfc.Tag;
-import android.os.PersistableBundle;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.movile.up.seriestracker.asynctask.FetchLocalEpisodeDetails;
+import com.movile.up.seriestracker.asynctask.FetchLocalEpisodeDetailsLoaderCallBack;
 import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.interfaces.OnOperationListener;
+import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
 
 
 
-public class EpisodeDetailsActivity extends ActionBarActivity implements OnOperationListener<Episode>{
+public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpisodeDetailsListener<Episode> {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private static String episodio = "";
+
+    //(getResources().getString(R.string.api_url_base) + getResources().getString(R.string.api_url_episode))));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
-        new FetchLocalEpisodeDetails(this, this).execute();
+        getLoaderManager().initLoader(0, null, new FetchLocalEpisodeDetailsLoaderCallBack(this, this, "https://api-v2launch.trakt.tv/shows/game-of-thrones/seasons/5/episodes/1/?extended=full,images"));
     }
 
     @Override
@@ -75,13 +73,13 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnOpera
         super.onRestoreInstanceState(savedInstanceState);
         Log.d(TAG, "onRestoreInstance()");
         if(episodio != "")
-            Log.d(TAG, "Funcionou");
+            Log.d(TAG, "Funcionu");
     }
 
     @Override
-    public void onOperationSucess(Episode episode) {
-        ((TextView) super.findViewById(R.id.episode_details_title)).setText(episode.title());
-        ((TextView) super.findViewById(R.id.episode_details_first_aired)).setText(episode.firstAired());
-        ((TextView) super.findViewById(R.id.episode_details_overview)).setText(episode.overview());
+    public void OnEpisodeDetailsSucess(Episode episode) {
+        ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
+        ((TextView) findViewById(R.id.episode_details_first_aired)).setText(episode.firstAired());
+        ((TextView) findViewById(R.id.episode_details_overview)).setText(episode.overview());
     }
 }
