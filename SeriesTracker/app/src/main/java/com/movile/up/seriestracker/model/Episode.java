@@ -2,6 +2,7 @@ package com.movile.up.seriestracker.model;
 
 
 import com.google.gson.annotations.SerializedName;
+import com.movile.up.seriestracker.util.FormatUtil;
 
 public class Episode {
 
@@ -47,7 +48,7 @@ public class Episode {
     }
 
     public String firstAired() {
-        return firstAired;
+        return FormatUtil.formatDate(FormatUtil.formatDate(firstAired));
     }
 
     public String[] translations() {

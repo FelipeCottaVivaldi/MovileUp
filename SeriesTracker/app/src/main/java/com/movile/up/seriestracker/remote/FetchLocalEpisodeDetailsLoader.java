@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.asynctask;
+package com.movile.up.seriestracker.remote;
 
 /**
  * Created by android on 7/16/15.
@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
 import java.net.URL;
 
 public class FetchLocalEpisodeDetailsLoader extends AsyncTaskLoader<Episode>{
@@ -61,8 +59,8 @@ public class FetchLocalEpisodeDetailsLoader extends AsyncTaskLoader<Episode>{
     private HttpURLConnection configureConnection(Context context, String url) throws IOException {
         HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
 
-        connection.setReadTimeout(10000);
-        connection.setConnectTimeout(15000);
+        connection.setReadTimeout(15000);
+        connection.setConnectTimeout(10000);
         connection.setRequestMethod("GET");
         connection.setDoInput(true);
         connection.setRequestProperty("Content-Type", "application/json");

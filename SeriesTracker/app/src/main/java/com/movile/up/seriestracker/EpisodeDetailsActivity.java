@@ -5,10 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.movile.up.seriestracker.asynctask.FetchLocalEpisodeDetailsLoaderCallBack;
+import com.movile.up.seriestracker.remote.FetchLocalEpisodeDetailsLoaderCallBack;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
-
+import com.movile.up.seriestracker.util.FormatUtil;
 
 
 public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpisodeDetailsListener<Episode> {
@@ -22,7 +22,8 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpiso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
-        getLoaderManager().initLoader(0, null, new FetchLocalEpisodeDetailsLoaderCallBack(this, this, "https://api-v2launch.trakt.tv/shows/game-of-thrones/seasons/5/episodes/1/?extended=full,images"));
+        getLoaderManager().initLoader(0, null, new FetchLocalEpisodeDetailsLoaderCallBack(this, this,
+                FormatUtil.formatUrl(this, "breaking-bad", "5", "1"))).forceLoad();
     }
 
     @Override

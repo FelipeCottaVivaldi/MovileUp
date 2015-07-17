@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.asynctask;
+package com.movile.up.seriestracker.remote;
 
 import android.app.LoaderManager;
 import android.content.Context;
@@ -7,8 +7,7 @@ import android.os.Bundle;
 
 import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
-
-import java.net.URL;
+import com.movile.up.seriestracker.remote.FetchLocalEpisodeDetailsLoader;
 
 
 /**

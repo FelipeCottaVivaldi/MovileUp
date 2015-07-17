@@ -3,9 +3,13 @@ package com.movile.up.seriestracker.util;
 /**
  * Created by android on 7/16/15.
  */
+import android.content.Context;
 import android.util.Log;
 
+import com.movile.up.seriestracker.R;
+
 import java.text.DecimalFormat;
+import java.text.MessageFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,6 +51,13 @@ public class FormatUtil {
             return date;
         }
         return new SimpleDateFormat(FORMAT_DATE_TO_STRING).format(value);
+    }
+
+    public static String formatUrl(Context context, String show, String season, String episode){
+        String url = context.getResources().getString(R.string.api_url_base).concat(context.getResources().getString(R.string.api_url_episode));
+        return MessageFormat.format(url, show, season, episode);
+
+
     }
 
 }

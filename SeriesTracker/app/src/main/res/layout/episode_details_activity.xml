@@ -31,6 +31,7 @@
                     android:layout_alignBottom="@id/episode_details_screenshot"
                     android:layout_margin="@dimen/default_spacing_large"
                     android:text="From Pole to Pole"
+                    android:textColor="@color/default_background_second"
                     android:textSize="@dimen/default_textSize_veryLarge"/>
 
             </RelativeLayout>
