@@ -3,11 +3,14 @@ package com.movile.up.seriestracker;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.remote.FetchLocalEpisodeDetailsLoaderCallBack;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
+import com.movile.up.seriestracker.retrofit.FetchLocalEpisodeDetailsRetrofit;
 import com.movile.up.seriestracker.util.FormatUtil;
 
 
@@ -16,17 +19,14 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpiso
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private static String episodio = "";
 
-    //(getResources().getString(R.string.api_url_base) + getResources().getString(R.string.api_url_episode))));
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
-        getLoaderManager().initLoader(0, null, new FetchLocalEpisodeDetailsLoaderCallBack(this, this,
-                FormatUtil.formatUrl(this, "breaking-bad", "5", "1"))).forceLoad();
+        new FetchLocalEpisodeDetailsRetrofit(this, this).loadEpisode("how-i-met-your-mother", 5l, 1l);
     }
 
-    @Override
+   @Override
     protected void onStart() {
         super.onStart();
         Log.d(TAG, "onStart()");
@@ -82,5 +82,11 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpiso
         ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
         ((TextView) findViewById(R.id.episode_details_first_aired)).setText(episode.firstAired());
         ((TextView) findViewById(R.id.episode_details_overview)).setText(episode.overview());
+        Glide
+                .with(this)
+                .load(episode.images().screenshot().get("full"))
+                .placeholder(R.drawable.highlight_placeholder)
+                .centerCrop()
+                .into((ImageView)findViewById(R.id.episode_details_screenshot));
     }
 }

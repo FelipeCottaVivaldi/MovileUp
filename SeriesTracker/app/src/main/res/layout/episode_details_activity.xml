@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@id/episode_details_screenshot"
                     android:layout_margin="@dimen/default_spacing_large"
-                    android:text="From Pole to Pole"
+                    android:text="Title"
                     android:textColor="@color/default_background_second"
                     android:textSize="@dimen/default_textSize_veryLarge"/>
 
@@ -107,7 +107,7 @@
                         android:id="@+id/episode_details_overview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="bablablablabalbablablablabalbablablbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabal"
+                        android:text="balablabalbablablablabalbablablablabalablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabal"
                         android:textSize="@dimen/default_textSize_medium"
                         android:textColor="@color/default_textColor_fourth"/>
 
