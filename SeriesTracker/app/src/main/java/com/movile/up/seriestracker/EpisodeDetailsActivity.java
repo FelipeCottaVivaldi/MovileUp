@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.movile.up.seriestracker.interfaces.EpisodeDetailsView;
+import com.movile.up.seriestracker.presenter.EpisodeDetailsPresenter;
 import com.movile.up.seriestracker.remote.FetchLocalEpisodeDetailsLoaderCallBack;
 import com.movile.up.seriestracker.model.Episode;
 import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
@@ -14,7 +16,7 @@ import com.movile.up.seriestracker.retrofit.FetchLocalEpisodeDetailsRetrofit;
 import com.movile.up.seriestracker.util.FormatUtil;
 
 
-public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpisodeDetailsListener<Episode> {
+public class EpisodeDetailsActivity extends ActionBarActivity implements EpisodeDetailsView {
 
     private static final String TAG = EpisodeDetailsActivity.class.getSimpleName();
     private static String episodio = "";
@@ -23,7 +25,8 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpiso
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
-        new FetchLocalEpisodeDetailsRetrofit(this, this).loadEpisode("how-i-met-your-mother", 5l, 1l);
+        //new FetchLocalEpisodeDetailsRetrofit(this, this).loadEpisode("how-i-met-your-mother", 5l, 1l);
+        new EpisodeDetailsPresenter(this, this).loadEpisode();
     }
 
    @Override
@@ -78,7 +81,7 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpiso
     }
 
     @Override
-    public void OnEpisodeDetailsSucess(Episode episode) {
+    public void displayEpisode(Episode episode) {
         ((TextView) findViewById(R.id.episode_details_title)).setText(episode.title());
         ((TextView) findViewById(R.id.episode_details_first_aired)).setText(episode.firstAired());
         ((TextView) findViewById(R.id.episode_details_overview)).setText(episode.overview());
@@ -87,6 +90,6 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements OnEpiso
                 .load(episode.images().screenshot().get("full"))
                 .placeholder(R.drawable.highlight_placeholder)
                 .centerCrop()
-                .into((ImageView)findViewById(R.id.episode_details_screenshot));
+                .into((ImageView) findViewById(R.id.episode_details_screenshot));
     }
 }

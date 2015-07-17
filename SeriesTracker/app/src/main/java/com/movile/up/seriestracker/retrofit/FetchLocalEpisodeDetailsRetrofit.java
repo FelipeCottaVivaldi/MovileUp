@@ -4,6 +4,8 @@ import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.interfaces.EpisodeDetailsCallback;
+import com.movile.up.seriestracker.interfaces.EpisodeDetailsView;
 import com.movile.up.seriestracker.interfaces.EpisodeRemoteService;
 import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
 import com.movile.up.seriestracker.model.Episode;
@@ -19,10 +21,10 @@ import retrofit.client.Response;
 public class FetchLocalEpisodeDetailsRetrofit {
 
     private static final String TAG = FetchLocalEpisodeDetailsRetrofit.class.getSimpleName();
-    private OnEpisodeDetailsListener<Episode> mListener;
+    private EpisodeDetailsCallback<Episode> mListener;
     RestAdapter mAdapter;
 
-    public FetchLocalEpisodeDetailsRetrofit(Context context, OnEpisodeDetailsListener<Episode> listener){
+    public FetchLocalEpisodeDetailsRetrofit(Context context, EpisodeDetailsCallback<Episode> listener){
         mAdapter = new RestAdapter.Builder().setEndpoint(context.getResources().getString(R.string.api_url_base)).build();
         mListener = listener;
     }
