@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/episode_view"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/default_spacing_large">
+
+    <TextView
+        android:id="@+id/episode_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:text="E??"
+        android:textSize="@dimen/default_textSize_small"
+        android:background="@drawable/episode_item_number"
+        android:gravity="center"
+        android:textColor="@color/episode_number_color"
+        />
+
+    <TextView
+        android:id="@+id/episode_title"
+        android:layout_marginLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/default_textSize_medium"
+        android:text="TITLE"/>
+
+</LinearLayout>

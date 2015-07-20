@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker;
+package com.movile.up.seriestracker.activity;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -7,13 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.interfaces.EpisodeDetailsView;
 import com.movile.up.seriestracker.presenter.EpisodeDetailsPresenter;
-import com.movile.up.seriestracker.remote.FetchLocalEpisodeDetailsLoaderCallBack;
 import com.movile.up.seriestracker.model.Episode;
-import com.movile.up.seriestracker.interfaces.OnEpisodeDetailsListener;
-import com.movile.up.seriestracker.retrofit.FetchLocalEpisodeDetailsRetrofit;
-import com.movile.up.seriestracker.util.FormatUtil;
 
 
 public class EpisodeDetailsActivity extends ActionBarActivity implements EpisodeDetailsView {
@@ -25,7 +22,6 @@ public class EpisodeDetailsActivity extends ActionBarActivity implements Episode
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.episode_details_activity);
-        //new FetchLocalEpisodeDetailsRetrofit(this, this).loadEpisode("how-i-met-your-mother", 5l, 1l);
         new EpisodeDetailsPresenter(this, this).loadEpisode();
     }
 

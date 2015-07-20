@@ -21,7 +21,7 @@ public class EpisodeDetailsPresenter implements EpisodeDetailsCallback<Episode>{
     }
 
     public void loadEpisode(){
-        new FetchLocalEpisodeDetailsRetrofit(mContext, this).loadEpisode("the-simpsons", 5l, 8l);
+        new FetchLocalEpisodeDetailsRetrofit(mContext, this).loadEpisode("the-walking-dead", 5l, 8l);
     }
 
     @Override
