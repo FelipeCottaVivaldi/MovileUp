@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SeriesTracker</string>
+    <string name="navigation_first_content_label">INFO</string>
+    <string name="navigation_second_content_label">SEASONS</string>
 </resources>
