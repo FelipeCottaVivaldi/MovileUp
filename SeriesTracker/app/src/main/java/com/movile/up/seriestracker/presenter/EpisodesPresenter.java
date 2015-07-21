@@ -24,8 +24,8 @@ public class EpisodesPresenter implements EpisodesCallBack<Episode> {
         mContext = context;
     }
 
-    public void loadEpisodes(){
-        new FetchLocalEpisodesRetrofit(mContext, this).loadEpisodes("the-walking-dead", 5l);
+    public void loadEpisodes(String show, Long season){
+        new FetchLocalEpisodesRetrofit(mContext, this).loadEpisodes(show, season);
     }
 
     @Override

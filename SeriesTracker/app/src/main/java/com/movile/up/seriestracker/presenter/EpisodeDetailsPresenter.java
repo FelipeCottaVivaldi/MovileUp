@@ -20,8 +20,8 @@ public class EpisodeDetailsPresenter implements EpisodeDetailsCallback<Episode>{
         mContext = context;
     }
 
-    public void loadEpisode(){
-        new FetchLocalEpisodeDetailsRetrofit(mContext, this).loadEpisode("the-walking-dead", 5l, 8l);
+    public void loadEpisode(String show, Long season, Long episode){
+        new FetchLocalEpisodeDetailsRetrofit(mContext, this).loadEpisode(show, season, episode);
     }
 
     @Override

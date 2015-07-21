@@ -18,9 +18,11 @@ import java.util.List;
  */
 public class EpisodesAdapter extends ArrayAdapter<Episode> {
     private List<Episode> episodeList;
+    private OnContentClickListener mClickListener;
 
-    public EpisodesAdapter(Context context, OnContentClickListener<Episode> clickListener) {
+    public EpisodesAdapter(Context context, OnContentClickListener clickListener) {
         super(context, R.layout.episode_item);
+        mClickListener = clickListener;
     }
 
     @Override
@@ -54,9 +56,16 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
         return view;
     }
 
-    private void populateViewFromHolder(ViewHolder holder, int position) {
+    private void populateViewFromHolder(ViewHolder holder, final int position) {
         holder.getNumber().setText("E" + episodeList.get(position).number().toString());
         holder.getTitle().setText(episodeList.get(position).title().toString());
+        holder.mView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mClickListener.onEpisodeClick(episodeList.get(position));
+            }
+        });
+
     }
 
     public void updateEpisodes(List<Episode> episodes){
@@ -69,7 +78,7 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
         private TextView number;
         private TextView title;
         public ViewHolder(View root) {
-            mView = root.findViewById(R.id.episode_view);
+            mView = root;
             number = (TextView) root.findViewById(R.id.episode_number);
             title = (TextView) root.findViewById(R.id.episode_title);
         }
