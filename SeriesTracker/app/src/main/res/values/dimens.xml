@@ -22,4 +22,11 @@
     <!-- Base Loading -->
     <dimen name="base_loading_progress_size">48dp</dimen>
 
+    <dimen name="content_item_container_padding">8dp</dimen>
+    <dimen name="content_item_title_textSize">16sp</dimen>
+    <dimen name="content_item_description_textSize">12sp</dimen>
+
+    <dimen name="content_item_grid_container_margin">1dp</dimen>
+    <dimen name="linear_horizontal_recycler_height">65dp</dimen>
+
 </resources>

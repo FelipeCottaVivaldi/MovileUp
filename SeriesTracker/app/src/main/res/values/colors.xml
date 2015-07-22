@@ -35,5 +35,7 @@
 
     <!-- Base Loading -->
     <color name="base_loading_container_background">#99333333</color>
+    <color name="content_item_container_odd_background">#0288D1</color>
+    <color name="content_item_container_even_background">#0277BD</color>
 
 </resources>

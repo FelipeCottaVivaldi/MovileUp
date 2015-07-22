@@ -13,6 +13,52 @@
 
     <style name="AppTheme.Base" parent="AppTheme"></style>
 
+    <style name="AppTheme.ContentItem"></style>
+
+    <style name="AppTheme.ContentItem.Container">
+        <item name="android:background">@color/content_item_container_odd_background</item>
+        <item name="android:padding">@dimen/content_item_container_padding</item>
+    </style>
+
+    <style name="AppTheme.ContentItem.Title">
+        <item name="android:textSize">@dimen/content_item_title_textSize</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="AppTheme.ContentItem.Description">
+        <item name="android:textSize">@dimen/content_item_description_textSize</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="AppTheme.ContentItem.Linear"></style>
+
+    <style name="AppTheme.ContentItem.Linear.Vertical"></style>
+
+    <style name="AppTheme.ContentItem.Linear.Vertical.Container" parent="AppTheme.ContentItem.Container"></style>
+
+    <style name="AppTheme.ContentItem.Linear.Horizontal"></style>
+
+    <style name="AppTheme.ContentItem.Linear.Horizontal.Container" parent="AppTheme.ContentItem.Container">
+        <item name="android:layout_width">100dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="AppTheme.ContentItem.Grid"></style>
+
+    <style name="AppTheme.ContentItem.Grid.Container" parent="AppTheme.ContentItem.Container">
+        <item name="android:layout_margin">@dimen/content_item_grid_container_margin</item>
+    </style>
+
+    <style name="AppTheme.Linear"></style>
+
+    <style name="AppTheme.Linear.Horizontal"></style>
+
+    <style name="AppTheme.Linear.Horizontal.Recycler">
+        <item name="android:layout_height">@dimen/linear_horizontal_recycler_height</item>
+    </style>
+
     <!-- Base Navigation -->
     <style name="AppTheme.Base.Navigation"></style>
 
