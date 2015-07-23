@@ -5,34 +5,37 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.interfaces.OnContentClickListener;
-import com.movile.up.seriestracker.model.Episode;
+import com.movile.up.seriestracker.interfaces.OnShowListener;
+import com.movile.up.seriestracker.model.Show;
 
 import java.util.List;
 
 /**
- * Created by android on 7/20/15.
+ * Created by android on 7/23/15.
  */
-public class EpisodesAdapter extends ArrayAdapter<Episode> {
-    private List<Episode> episodeList;
-    private OnContentClickListener mClickListener;
+public class PopularShowsAdapter extends ArrayAdapter<Show> {
+    private List<Show> showList;
+    private OnShowListener mClickListener;
+    private Context mContext;
 
-    public EpisodesAdapter(Context context, OnContentClickListener clickListener) {
-        super(context, R.layout.episode_item);
+    public PopularShowsAdapter(Context context, OnShowListener clickListener) {
+        super(context, R.layout.popular_shows_item);
+        mContext = context;
         mClickListener = clickListener;
     }
 
     @Override
     public int getCount() {
-        return episodeList == null ? 0 : episodeList.size();
+        return showList == null ? 0 : showList.size();
     }
 
     @Override
-    public Episode getItem(int position) {
-        return episodeList == null ? null : episodeList.get(position);
+    public Show getItem(int position) {
+        return showList.get(position);
     }
 
     @Override
@@ -45,7 +48,7 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
         ViewHolder holder;
         if (view == null) {
             view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.episode_item, parent, false);
+                    .inflate(R.layout.popular_shows_item, parent, false);
             holder = new ViewHolder(view);
             view.setTag(holder);
         } else {
@@ -57,41 +60,38 @@ public class EpisodesAdapter extends ArrayAdapter<Episode> {
     }
 
     private void populateViewFromHolder(ViewHolder holder, final int position) {
-        holder.getNumber().setText("E" + episodeList.get(position).number().toString());
-        holder.getTitle().setText(episodeList.get(position).title().toString());
+        Glide
+                .with(mContext)
+                .load(showList.get(position).images().poster().get("full"))
+                .placeholder(R.drawable.show_item_placeholder)
+                .centerCrop()
+                .into(holder.thumb());
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mClickListener.onEpisodeClick(episodeList.get(position));
+                mClickListener.onShowClick(showList.get(position));
             }
         });
 
     }
 
-    public void updateEpisodes(List<Episode> episodes){
-        episodeList = episodes;
+    public void updateShows(List<Show> shows){
+        showList = shows;
         notifyDataSetChanged();
     }
 
     public static class ViewHolder{
         private View mView;
-        private TextView number;
-        private TextView title;
+        private ImageView mThumb;
         public ViewHolder(View root) {
             mView = root;
-            number = (TextView) root.findViewById(R.id.episode_number);
-            title = (TextView) root.findViewById(R.id.episode_title);
+            mThumb = (ImageView) root.findViewById(R.id.popular_shows_thumb);
         }
         public View view() {
             return mView;
         }
 
-        public TextView getNumber(){
-            return number;
-        }
-
-        public TextView getTitle(){
-            return title;
-        }
+        public ImageView thumb(){ return mThumb;}
     }
 }

@@ -87,6 +87,17 @@
         <item name="android:indeterminate">true</item>
     </style>
 
+    <style name="AppTheme.Grid">
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:verticalSpacing">@dimen/default_spacing_small</item>
+        <item name="android:gravity">center</item>
+        <item name="android:columnWidth">114dp</item>
+        <item name="android:stretchMode">spacingWidthUniform</item>
+        <item name="android:paddingTop">@dimen/default_spacing_small</item>
+        <item name="android:paddingBottom">@dimen/default_spacing_small</item>
+        <item name="android:clipToPadding">false</item>
+    </style>
+
     <!-- TO BE CONTINUED -->
 
 </resources>

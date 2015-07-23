@@ -30,7 +30,7 @@ public class ShowDetailsSeasonFragment extends Fragment implements ShowSeasonsVi
 
     private ShowSeasonsRecyclerAdapter mAdapter;
     private View mView;
-    private String mShow = "the-walking-dead";
+    private String mShow;
     public static final String EXTRA_SHOW = "show";
     public static final String EXTRA_SEASON = "season";
     public static final String EXTRA_RATING = "rating";
@@ -47,6 +47,8 @@ public class ShowDetailsSeasonFragment extends Fragment implements ShowSeasonsVi
     @Override
     public void onStart() {
         super.onStart();
+        Bundle b = this.getArguments();
+        mShow = b.getString(EXTRA_SHOW);
         new ShowSeasonsPresenter(this.getActivity(), this).loadEpisodes(mShow);
         configureRecyclerView();
     }

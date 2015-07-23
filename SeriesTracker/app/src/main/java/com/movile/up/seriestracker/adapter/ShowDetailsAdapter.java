@@ -1,6 +1,7 @@
 package com.movile.up.seriestracker.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -16,12 +17,15 @@ public class ShowDetailsAdapter extends FragmentPagerAdapter{
 
     public static final int POSITION_FIRST_CONTENT = 0;
     public static final int POSITION_SECOND_CONTENT = 1;
+    public static final String EXTRA_SHOW = "show";
+    public String mShow;
 
     private Context mContext;
 
-    public ShowDetailsAdapter(FragmentManager manager, Context context) {
+    public ShowDetailsAdapter(FragmentManager manager, Context context, String show) {
         super(manager);
         mContext = context;
+        mShow = show;
     }
 
     @Override
@@ -30,7 +34,11 @@ public class ShowDetailsAdapter extends FragmentPagerAdapter{
             return new ShowDetailsInfoFragment();
         }
         if (position == POSITION_SECOND_CONTENT) {
-            return new ShowDetailsSeasonFragment();
+            Bundle b = new Bundle();
+            b.putString(EXTRA_SHOW, mShow);
+            ShowDetailsSeasonFragment fragment = new ShowDetailsSeasonFragment();
+            fragment.setArguments(b);
+            return fragment;
         }
         return null;
     }
