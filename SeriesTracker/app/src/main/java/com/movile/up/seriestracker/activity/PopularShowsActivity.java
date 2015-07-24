@@ -1,5 +1,8 @@
 package com.movile.up.seriestracker.activity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +18,7 @@ import com.movile.up.seriestracker.interfaces.PopularShowsView;
 import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.presenter.EpisodesPresenter;
 import com.movile.up.seriestracker.presenter.PopularShowsPresenter;
+import com.movile.up.seriestracker.service.UpdatesService;
 
 import java.util.List;
 
@@ -36,8 +40,14 @@ public class PopularShowsActivity extends AppCompatActivity implements PopularSh
         GridView gridview = (GridView) findViewById(R.id.shows_grid_view);
         mAdapter = new PopularShowsAdapter(this, this);
         gridview.setAdapter(mAdapter);
+    }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        //PendingIntent pendingIntent = PendingIntent.getService(this, 0, new Intent(this, UpdatesService.class), 0);
+        //AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        //manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10000, pendingIntent);
     }
 
     @Override

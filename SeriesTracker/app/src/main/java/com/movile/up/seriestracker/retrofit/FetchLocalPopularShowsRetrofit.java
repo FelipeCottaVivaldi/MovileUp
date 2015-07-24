@@ -1,27 +1,17 @@
 package com.movile.up.seriestracker.retrofit;
 
 import android.content.Context;
-import android.support.v7.util.SortedList;
 import android.util.Log;
-
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.interfaces.PopularShowsCallback;
 import com.movile.up.seriestracker.interfaces.ShowRemoteService;
-import com.movile.up.seriestracker.interfaces.ShowSeasonsCallback;
-import com.movile.up.seriestracker.interfaces.ShowSeasonsRemoteService;
-import com.movile.up.seriestracker.model.Season;
 import com.movile.up.seriestracker.model.Show;
-
 import java.util.List;
-
 import retrofit.Callback;
 import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
-/**
- * Created by android on 7/23/15.
- */
 public class FetchLocalPopularShowsRetrofit {
 
     private static final String TAG = FetchLocalPopularShowsRetrofit.class.getSimpleName();

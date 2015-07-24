@@ -13,10 +13,12 @@ import com.movile.up.seriestracker.R;
  * Created by android on 7/21/15.
  */
 public class ShowDetailsInfoFragment extends Fragment {
+    private View mView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.show_details_info_fragment, container, false);
+        mView = inflater.inflate(R.layout.show_details_info_fragment, container, false);
+        return mView;
     }
 }
