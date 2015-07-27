@@ -30,6 +30,13 @@ public class PopularShowsActivity extends AppCompatActivity implements PopularSh
     private PopularShowsAdapter mAdapter;
     public static final String EXTRA_SHOW = "show";
     public static final String EXTRA_TITLE = "title";
+    public static final String EXTRA_RATING = "rating";
+    public static final String EXTRA_SCREENSHOT = "screenshot";
+    public static final String EXTRA_OVERVIEW = "overview";
+    public static final String EXTRA_STATUS = "status";
+    public static final String EXTRA_FIRSTAIRED = "firstaired";
+    public static final String EXTRA_COUNTRY = "country";
+    public static final String EXTRA_LANGUAGE = "language";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,13 @@ public class PopularShowsActivity extends AppCompatActivity implements PopularSh
         Intent intent = new Intent(this, ShowDetailsActivity.class);
         intent.putExtra(EXTRA_SHOW, show.ids().slug());
         intent.putExtra(EXTRA_TITLE, show.title());
+        intent.putExtra(EXTRA_RATING, show.rating());
+        intent.putExtra(EXTRA_SCREENSHOT, show.images().thumb().get("full"));
+        intent.putExtra(EXTRA_OVERVIEW, show.overview());
+        intent.putExtra(EXTRA_STATUS, show.status());
+        intent.putExtra(EXTRA_FIRSTAIRED, show.firstAired());
+        intent.putExtra(EXTRA_COUNTRY, show.country());
+        intent.putExtra(EXTRA_LANGUAGE, show.language());
         startActivity(intent);
     }
 

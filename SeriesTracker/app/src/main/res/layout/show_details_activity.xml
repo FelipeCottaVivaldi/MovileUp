@@ -1,13 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/season_details_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#E1E1E1">
+
+        <ImageView
+            android:id="@+id/show_details_screenshot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/highlight_placeholder" />
+
+        <TextView
+            android:id="@+id/show_details_rating"
+           android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/show_details_screenshot"
+            android:layout_margin="@dimen/default_spacing_large"
+            android:width="48dp"
+            android:height="48dp"
+            android:background="@drawable/rating"
+            android:gravity="center"
+            android:maxLength="3"
+            android:text="9.9"
+            android:textColor="@color/default_textColor_first"
+            android:textSize="@dimen/default_textSize_large" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/show_details_favorite"
+            style="@style/AppTheme.ShowDetails.Favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/show_details_rating"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/default_spacing_large"/>
+
+    </RelativeLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
-        android:layout_below="@id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@id/view_pager">
 
         <android.support.v4.view.PagerTabStrip
             android:id="@+id/pager_tab"

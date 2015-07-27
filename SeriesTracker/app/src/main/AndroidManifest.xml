@@ -55,6 +55,10 @@
                 <action android:name="com.movile.up.seriestracker.action.SHOW_UPDATE" />
             </intent-filter>
         </receiver>
+
+        <provider
+            android:name=".database.manual.provider.SeriesTrackerContentProvider"
+            android:authorities="@string/database_authority" />
     </application>
 
 </manifest>

@@ -45,7 +45,7 @@
                         android:background="@color/default_background_third"></View>
 
                     <TextView
-                        android:id="@+id/episode_details_overview"
+                        android:id="@+id/show_details_overview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:text="balablabalbablablablabalbablablablabalablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabalbablablablabal"
@@ -130,7 +130,7 @@
                         android:background="@color/default_background_third"></View>
 
                     <TextView
-                        android:id="@+id/episode_details_details"
+                        android:id="@+id/show_details_informations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Status: \nStarted in: \nCountry: \nLanguage:"

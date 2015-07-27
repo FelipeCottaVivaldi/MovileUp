@@ -18,20 +18,43 @@ public class ShowDetailsAdapter extends FragmentPagerAdapter{
     public static final int POSITION_FIRST_CONTENT = 0;
     public static final int POSITION_SECOND_CONTENT = 1;
     public static final String EXTRA_SHOW = "show";
+    public static final String EXTRA_OVERVIEW = "overview";
+    public static final String EXTRA_STATUS = "status";
+    public static final String EXTRA_FIRSTAIRED = "firstaired";
+    public static final String EXTRA_COUNTRY = "country";
+    public static final String EXTRA_LANGUAGE = "language";
     public String mShow;
+    private String mOverview;
+    private String mStatus;
+    private String mFirstAired;
+    private String mCountry;
+    private String mLanguage;
 
     private Context mContext;
 
-    public ShowDetailsAdapter(FragmentManager manager, Context context, String show) {
+    public ShowDetailsAdapter(FragmentManager manager, Context context, String show, String overview, String status, String firstaired, String country, String language ) {
         super(manager);
         mContext = context;
         mShow = show;
+        mOverview = overview;
+        mStatus = status;
+        mFirstAired = firstaired;
+        mCountry = country;
+        mLanguage = language;
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == POSITION_FIRST_CONTENT) {
-            return new ShowDetailsInfoFragment();
+            Bundle b = new Bundle();
+            b.putString(EXTRA_OVERVIEW, mOverview);
+            b.putString(EXTRA_STATUS, mStatus);
+            b.putString(EXTRA_FIRSTAIRED, mFirstAired);
+            b.putString(EXTRA_COUNTRY, mCountry);
+            b.putString(EXTRA_LANGUAGE, mLanguage);
+            ShowDetailsInfoFragment infoFragment = new ShowDetailsInfoFragment();
+            infoFragment.setArguments(b);
+            return infoFragment;
         }
         if (position == POSITION_SECOND_CONTENT) {
             Bundle b = new Bundle();
