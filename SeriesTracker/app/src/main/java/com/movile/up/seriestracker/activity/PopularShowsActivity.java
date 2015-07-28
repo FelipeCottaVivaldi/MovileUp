@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * Created by android on 7/23/15.
  */
-public class PopularShowsActivity extends AppCompatActivity implements PopularShowsView, OnShowListener {
+public class PopularShowsActivity extends BaseNavigationDrawerActivity implements PopularShowsView, OnShowListener {
 
     private PopularShowsAdapter mAdapter;
     public static final String EXTRA_SHOW = "show";
@@ -42,6 +42,7 @@ public class PopularShowsActivity extends AppCompatActivity implements PopularSh
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.popular_shows_activitiy);
+        configureNavigation();
         new PopularShowsPresenter(this, this).loadShows();
 
         GridView gridview = (GridView) findViewById(R.id.shows_grid_view);
@@ -52,9 +53,6 @@ public class PopularShowsActivity extends AppCompatActivity implements PopularSh
     @Override
     protected void onStart() {
         super.onStart();
-        //PendingIntent pendingIntent = PendingIntent.getService(this, 0, new Intent(this, UpdatesService.class), 0);
-        //AlarmManager manager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
-        //manager.setRepeating(AlarmManager.RTC_WAKEUP, 0, 10000, pendingIntent);
     }
 
     @Override
