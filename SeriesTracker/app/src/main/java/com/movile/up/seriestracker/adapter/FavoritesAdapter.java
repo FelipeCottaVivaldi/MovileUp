@@ -55,17 +55,21 @@ public class FavoritesAdapter extends CursorAdapter {
 
     }
 
-    public static class ViewHolder{
+    public static class ViewHolder {
         private View mView;
         private TextView mTitle;
+
         public ViewHolder(View root) {
             mView = root;
             mTitle = (TextView) root.findViewById(R.id.favorite_title);
         }
+
         public View view() {
             return mView;
         }
 
-        public TextView title(){ return mTitle;}
+        public TextView title() {
+            return mTitle;
+        }
     }
 }

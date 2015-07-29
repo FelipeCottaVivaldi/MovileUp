@@ -1,11 +1,15 @@
 package com.movile.up.seriestracker.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.BounceInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -100,16 +104,34 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
 
     @Override
     public void onFavoriteClick() {
-        if (favorite == null) {
-            fab.setImageResource(R.drawable.show_details_favorite_on);
-            fab.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_second));
-            favorite = new Favorite(mShow, mTitle);
-            favoriteDAO.save(favorite);
-        } else {
-            fab.setImageResource(R.drawable.show_details_favorite_off);
-            fab.setBackgroundTintList(getResources().getColorStateList(R.color.default_textColor_third));
-            favorite = null;
-            favoriteDAO.delete(mShow);
-        }
+
+        final FloatingActionButton button = (FloatingActionButton) findViewById(R.id.show_details_favorite);
+
+
+        ObjectAnimator animationX = ObjectAnimator.ofFloat(button, "scaleX", 1, 0);
+        animationX.setDuration(200);
+        animationX.addListener(new AnimatorListenerAdapter() {
+            public void onAnimationEnd(Animator animator) {
+
+                if (favorite == null) {
+                    fab.setImageResource(R.drawable.show_details_favorite_on);
+                    fab.setBackgroundTintList(getResources().getColorStateList(R.color.default_color_second));
+                    favorite = new Favorite(mShow, mTitle);
+                    favoriteDAO.save(favorite);
+                } else {
+                    fab.setImageResource(R.drawable.show_details_favorite_off);
+                    fab.setBackgroundTintList(getResources().getColorStateList(R.color.default_textColor_third));
+                    favorite = null;
+                    favoriteDAO.delete(mShow);
+                }
+
+                ObjectAnimator animationY = ObjectAnimator.ofFloat(button, "scaleX", 0, 1);
+                animationY.setDuration(200);
+                animationY.start();
+            }
+        });
+        animationX.start();
+
+
     }
 }

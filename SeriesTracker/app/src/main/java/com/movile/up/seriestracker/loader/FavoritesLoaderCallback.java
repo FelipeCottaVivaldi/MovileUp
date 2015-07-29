@@ -11,12 +11,12 @@ import com.movile.up.seriestracker.interfaces.OnFavoritesLoaderListener;
 /**
  * Created by android on 7/28/15.
  */
-public class FavoritesLoaderCallback implements LoaderManager.LoaderCallbacks<Cursor>{
+public class FavoritesLoaderCallback implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private Context mContext;
     private OnFavoritesLoaderListener mListener;
 
-    public FavoritesLoaderCallback(Context context, OnFavoritesLoaderListener listener){
+    public FavoritesLoaderCallback(Context context, OnFavoritesLoaderListener listener) {
         mContext = context;
         mListener = listener;
     }
