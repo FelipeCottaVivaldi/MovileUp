@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -76,6 +77,9 @@ public class ShowDetailsActivity extends BaseNavigationToolbarActivity implement
         }
         ViewPager pager = (ViewPager) findViewById(R.id.view_pager);
         pager.setAdapter(new ShowDetailsAdapter(getSupportFragmentManager(), this, mShow, mOverview, mStatus, mFirstAired, mCountry, mLanguage));
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(pager);
     }
 
     private void displayInformation() {

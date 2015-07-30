@@ -23,4 +23,12 @@ public interface ShowRemoteService {
     @GET("/shows/popular?limit=100&extended=full,images")
     void getShows(
             Callback<List<Show>> callback);
+
+    @Headers({
+            "trakt-api-version: " + ApiConfiguration.API_VERSION,
+            "trakt-api-key: " + ApiConfiguration.API_KEY
+    })
+    @GET("/movies/popular?limit=100&extended=full,images")
+    void getMovies(
+            Callback<List<Show>> callback);
 }

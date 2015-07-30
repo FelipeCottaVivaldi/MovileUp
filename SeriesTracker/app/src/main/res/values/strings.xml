@@ -2,6 +2,10 @@
     <string name="app_name">SeriesTracker</string>
     <string name="navigation_first_content_label">INFO</string>
     <string name="navigation_second_content_label">SEASONS</string>
+    <string name="navigation_third_content_label">RELATED</string>
+
+    <string name="popular_shows">POPULAR</string>
+    <string name="movies">MOVIES</string>
     <string name="base_navigation_drawer_open">Open</string>
     <string name="base_navigation_drawer_close">Close</string>
 </resources>

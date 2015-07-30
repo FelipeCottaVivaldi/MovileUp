@@ -44,7 +44,7 @@ public class FavoritesFragment extends Fragment implements OnFavoritesLoaderList
 
     @Override
     public void onFavoritesSuccess(Cursor cursor) {
-        if (cursor.equals(null)) {
+        if (cursor.getCount() <= 0) {
             Glide
                     .with(this)
                     .load(R.drawable.favorites_header_tv_unhappy)

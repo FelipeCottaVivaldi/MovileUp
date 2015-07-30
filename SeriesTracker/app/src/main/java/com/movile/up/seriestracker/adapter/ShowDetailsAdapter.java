@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.movile.up.seriestracker.R;
 import com.movile.up.seriestracker.fragments.ShowDetailsInfoFragment;
+import com.movile.up.seriestracker.fragments.ShowDetailsRelatedFragment;
 import com.movile.up.seriestracker.fragments.ShowDetailsSeasonFragment;
 
 /**
@@ -17,6 +18,7 @@ public class ShowDetailsAdapter extends FragmentPagerAdapter{
 
     public static final int POSITION_FIRST_CONTENT = 0;
     public static final int POSITION_SECOND_CONTENT = 1;
+    public static final int POSITION_THIRD_CONTENT = 2;
     public static final String EXTRA_SHOW = "show";
     public static final String EXTRA_OVERVIEW = "overview";
     public static final String EXTRA_STATUS = "status";
@@ -63,12 +65,19 @@ public class ShowDetailsAdapter extends FragmentPagerAdapter{
             fragment.setArguments(b);
             return fragment;
         }
+        if (position == POSITION_THIRD_CONTENT) {
+            Bundle b = new Bundle();
+            b.putString(EXTRA_SHOW, mShow);
+            ShowDetailsRelatedFragment fragment = new ShowDetailsRelatedFragment();
+            fragment.setArguments(b);
+            return fragment;
+        }
         return null;
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -78,6 +87,9 @@ public class ShowDetailsAdapter extends FragmentPagerAdapter{
         }
         if (position == POSITION_SECOND_CONTENT) {
             return mContext.getString(R.string.navigation_second_content_label);
+        }
+        if (position == POSITION_THIRD_CONTENT) {
+            return mContext.getString(R.string.navigation_third_content_label);
         }
         return null;
     }
