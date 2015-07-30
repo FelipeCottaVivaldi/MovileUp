@@ -1,6 +1,7 @@
 package com.movile.up.seriestracker.interfaces;
 
 import com.movile.up.seriestracker.model.Season;
+import com.movile.up.seriestracker.model.Show;
 import com.movile.up.seriestracker.remote.ApiConfiguration;
 
 import java.util.List;
@@ -31,6 +32,6 @@ public interface ShowSeasonsRemoteService {
     @GET("/shows/{show}/related?extended=full,images")
     void getRelatedSeasons(
             @Path("show") String show,
-            Callback<List<Season>> callback);
+            Callback<List<Show>> callback);
 
 }

@@ -4,9 +4,11 @@ import android.content.Context;
 import android.util.Log;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.interfaces.PopularShowsCallback;
 import com.movile.up.seriestracker.interfaces.ShowSeasonsCallback;
 import com.movile.up.seriestracker.interfaces.ShowSeasonsRemoteService;
 import com.movile.up.seriestracker.model.Season;
+import com.movile.up.seriestracker.model.Show;
 
 import java.util.List;
 
@@ -21,20 +23,20 @@ import retrofit.client.Response;
 public class FetchLocalShowRelatedSeasonsRetrofit {
 
     private static final String TAG = FetchLocalShowRelatedSeasonsRetrofit.class.getSimpleName();
-    private ShowSeasonsCallback<Season> mListener;
+    private PopularShowsCallback<Show> mListener;
     RestAdapter mAdapter;
 
-    public FetchLocalShowRelatedSeasonsRetrofit(Context context, ShowSeasonsCallback<Season> listener){
+    public FetchLocalShowRelatedSeasonsRetrofit(Context context, PopularShowsCallback<Show> listener){
         mAdapter = new RestAdapter.Builder().setEndpoint(context.getResources().getString(R.string.api_url_base)).build();
         mListener = listener;
     }
 
     public void loadRelatedSeasons(String show){
         ShowSeasonsRemoteService service = mAdapter.create(ShowSeasonsRemoteService.class);
-        service.getRelatedSeasons(show, new Callback<List<Season>>() {
+        service.getRelatedSeasons(show, new Callback<List<Show>>() {
             @Override
-            public void success(List<Season> seasons, Response response) {
-                mListener.OnEpisodesSuccess(seasons);
+            public void success(List<Show> seasons, Response response) {
+                mListener.OnShowsSuccess(seasons);
             }
 
             @Override

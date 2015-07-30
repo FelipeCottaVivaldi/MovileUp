@@ -1,4 +1,4 @@
-package com.movile.up.seriestracker.activity;
+package com.movile.up.seriestracker.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,18 +10,19 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 
 import com.movile.up.seriestracker.R;
+import com.movile.up.seriestracker.activity.ShowDetailsActivity;
 import com.movile.up.seriestracker.adapter.PopularShowsAdapter;
 import com.movile.up.seriestracker.interfaces.OnShowListener;
-import com.movile.up.seriestracker.interfaces.TrendingShowsView;
+import com.movile.up.seriestracker.interfaces.PopularShowsView;
 import com.movile.up.seriestracker.model.Show;
-import com.movile.up.seriestracker.presenter.PopularMoviesPresenter;
+import com.movile.up.seriestracker.presenter.PopularShowsPresenter;
 
 import java.util.List;
 
 /**
- * Created by android on 7/30/15.
+ * Created by android on 7/23/15.
  */
-public class PopularMoviesFragment extends Fragment implements TrendingShowsView, OnShowListener {
+public class PopularShowsFragment extends Fragment implements PopularShowsView, OnShowListener {
 
     private View mView;
     private PopularShowsAdapter mAdapter;
@@ -38,7 +39,7 @@ public class PopularMoviesFragment extends Fragment implements TrendingShowsView
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        mView = inflater.inflate(R.layout.trending_shows_fragment, container, false);
+        mView = inflater.inflate(R.layout.popular_shows_activitiy, container, false);
         return mView;
     }
 
@@ -46,9 +47,9 @@ public class PopularMoviesFragment extends Fragment implements TrendingShowsView
     @Override
     public void onStart() {
         super.onStart();
-        new PopularMoviesPresenter(this.getActivity(), this).loadMovies();
+        new PopularShowsPresenter(this.getActivity(), this).loadShows();
 
-        GridView gridview = (GridView) this.getActivity().findViewById(R.id.trending_grid_view);
+        GridView gridview = (GridView) this.getActivity().findViewById(R.id.shows_grid_view);
         mAdapter = new PopularShowsAdapter(this.getActivity(), this);
         gridview.setAdapter(mAdapter);
 

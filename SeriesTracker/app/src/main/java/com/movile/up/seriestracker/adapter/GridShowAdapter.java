@@ -6,8 +6,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.movile.up.seriestracker.R;
-import com.movile.up.seriestracker.activity.PopularShowsFragment;
-import com.movile.up.seriestracker.activity.PopularMoviesFragment;
+import com.movile.up.seriestracker.fragments.PopularShowsFragment;
+import com.movile.up.seriestracker.fragments.PopularMoviesFragment;
 
 /**
  * Created by android on 7/30/15.
